@@ -19,11 +19,19 @@ class MyComponent extends React.Component {
         })
     }
 
+    deleteJob = (job) => {
+        let currentJobs = this.state.jobs;
+        currentJobs.pop(job);
+        this.setState({
+            jobs: currentJobs,
+        })
+    }
+
     render() {
         return (
             <>
                 <AddComponent addJob={this.addJob} />
-                <ChildComponent jobs={this.state.jobs} />
+                <ChildComponent jobs={this.state.jobs} deleteJob={this.deleteJob} />
             </>
         )
     }

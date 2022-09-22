@@ -30,12 +30,27 @@ class ChildComponent extends React.Component {
         });
     }
 
+    handleDeleteAction = (job) => {
+        this.props.deleteJob(job);
+    }
+
+    a = () => {
+        const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+        const result = words.filter(word => word.length > 6);
+
+        console.log(result);
+        // expected output: Array ["exuberant", "destruction", "present"]
+
+    }
+
     render() {
         let data = this.props.jobs;
         console.log(data);
         return (
             <>
-                <div><button onClick={() => this.handleShowAction()}>Show</button></div>
+                {!this.state.isShow &&
+                    <div><button onClick={() => this.handleShowAction()}>Show</button></div>}
                 {this.state.isShow &&
                     <>
                         <div>
@@ -46,6 +61,7 @@ class ChildComponent extends React.Component {
                                             Id: {item.id},
                                             Role: {item.role},
                                             Salary: {item.salary}
+                                            <button onClick={(item) => this.handleDeleteAction(item)}>X</button>
                                         </div>
                                     )
                                 })
