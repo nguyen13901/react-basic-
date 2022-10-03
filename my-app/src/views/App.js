@@ -1,17 +1,15 @@
-import logo from './logo.svg';
-import './App.scss';
+import logo from "./logo.svg";
+import "./App.scss";
 // import MyComponent from './example/MyComponent.js';
-import ListToDo from './todo/ListToDo.js';
-import Navigators from "./navigators/Navigators"
-import Home from "./example/Home.js"
-import About from "./example/About.js"
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import ListToDo from "./todo/ListToDo.js";
+import Navigators from "./navigators/Navigators";
+import Home from "./example/Home.js";
+import About from "./example/About.js";
+import ListUser from "./Users/ListUser";
+import DetailUser from "./Users/DetailUser";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
@@ -19,9 +17,7 @@ function App() {
         <Navigators />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            {/* Edit <code>src/App.js</code> and save to reload. */}
-          </p>
+          <p>{/* Edit <code>src/App.js</code> and save to reload. */}</p>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -40,6 +36,12 @@ function App() {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/users" exact>
+              <ListUser />
+            </Route>
+            <Route path="/users/:id">
+              <DetailUser />
             </Route>
           </Switch>
         </header>
